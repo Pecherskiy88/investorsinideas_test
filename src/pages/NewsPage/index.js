@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getNews } from '../../redux/actions';
 
 import Header from '../../components/Header';
+import List from '../../components/List';
 
 const NewsPage = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const NewsPage = () => {
   return (
     <div>
       <Header />
-      NewsPage
+      <List />
     </div>
   );
 };

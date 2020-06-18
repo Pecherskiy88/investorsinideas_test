@@ -1,7 +1,25 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import styled from 'styled-components';
+
+import { newsDataSelector } from '../../redux/selectors';
+
+import Item from './Item';
 
 const List = () => {
-  return <div></div>;
+  const newsData = useSelector((state) => newsDataSelector(state));
+  const { articles } = newsData;
+  return (
+    <Div>
+      {articles.length > 0 ? articles.map((el) => <Item data={el} />) : []}
+    </Div>
+  );
 };
+
+const Div = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+`;
 
 export default List;

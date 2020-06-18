@@ -11,13 +11,19 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
+    margin: 6,
   },
   media: {
     height: 140,
   },
+  link: {
+    textDecoration: 'none',
+  },
 });
 
-const Item = () => {
+const Item = ({ data }) => {
+  console.log('data', data);
+  const { title, description, urlToImage, url } = data;
   const classes = useStyles();
 
   return (
@@ -25,16 +31,15 @@ const Item = () => {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
+          image={urlToImage}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lizard
+            {title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
+            {description}
           </Typography>
         </CardContent>
       </CardActionArea>
@@ -43,7 +48,14 @@ const Item = () => {
           Share
         </Button>
         <Button size="small" color="primary">
-          Learn More
+          <a
+            className={classes.link}
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Learn more
+          </a>
         </Button>
       </CardActions>
     </Card>

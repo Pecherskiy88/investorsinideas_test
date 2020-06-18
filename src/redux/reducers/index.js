@@ -23,7 +23,6 @@ const newsDataReducer = (state = newsDataInitialState, { type, payload }) => {
         errorData: {},
       };
     case GET_NEWS_SUCCESS: {
-      console.log('payload: ', payload);
       const { articles } = payload;
       return {
         ...state,
