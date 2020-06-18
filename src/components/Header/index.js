@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -17,6 +18,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  link: {
+    textDecoration: 'none',
+    color: '#fff',
+  },
 }));
 
 const Header = () => {
@@ -34,10 +39,22 @@ const Header = () => {
           >
             <MenuIcon />
           </IconButton>
-          <Button color="inherit">News</Button>
+          <Button color="inherit">
+            <NavLink className={classes.link} to="/">
+              News
+            </NavLink>
+          </Button>
           <div>
-            <Button color="inherit">Profile</Button>
-            <Button color="inherit">Login</Button>
+            <Button color="inherit">
+              <NavLink className={classes.link} to="/profile">
+                Profile
+              </NavLink>
+            </Button>
+            <Button color="inherit">
+              <NavLink className={classes.link} to="/login">
+                Login
+              </NavLink>
+            </Button>
           </div>
         </Toolbar>
       </AppBar>

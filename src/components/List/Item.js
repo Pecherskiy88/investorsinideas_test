@@ -22,7 +22,6 @@ const useStyles = makeStyles({
 });
 
 const Item = ({ data }) => {
-  console.log('data', data);
   const { title, description, urlToImage, url } = data;
   const classes = useStyles();
 

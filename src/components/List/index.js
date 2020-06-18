@@ -11,7 +11,9 @@ const List = () => {
   const { articles } = newsData;
   return (
     <Div>
-      {articles.length > 0 ? articles.map((el) => <Item data={el} />) : []}
+      {articles.length > 0
+        ? articles.map((el) => <Item data={el} key={el.publishedAt} />)
+        : []}
     </Div>
   );
 };
