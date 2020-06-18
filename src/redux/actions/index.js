@@ -1,7 +1,12 @@
 import { getNewsApi } from '../api';
 import { ActionType } from '../constants';
 
-const { GET_NEWS_INIT, GET_NEWS_SUCCESS, GET_NEWS_FAILURE } = ActionType;
+const {
+  GET_NEWS_INIT,
+  GET_NEWS_SUCCESS,
+  GET_NEWS_FAILURE,
+  SET_USER,
+} = ActionType;
 
 export const getNews = () => (dispatch) => {
   dispatch({
@@ -21,3 +26,8 @@ export const getNews = () => (dispatch) => {
       });
     });
 };
+
+export const setUser = (data) => ({
+  type: SET_USER,
+  payload: data,
+});

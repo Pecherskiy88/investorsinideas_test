@@ -2,7 +2,12 @@ import { combineReducers } from 'redux';
 
 import { ActionType } from '../constants';
 
-const { GET_NEWS_INIT, GET_NEWS_SUCCESS, GET_NEWS_FAILURE } = ActionType;
+const {
+  GET_NEWS_INIT,
+  GET_NEWS_SUCCESS,
+  GET_NEWS_FAILURE,
+  SET_USER,
+} = ActionType;
 
 const newsDataInitialState = {
   articles: [],
@@ -41,6 +46,26 @@ const newsDataReducer = (state = newsDataInitialState, { type, payload }) => {
         error: true,
         errorData: payload,
       };
+    }
+    default:
+      return state;
+  }
+};
+
+const userInitialState = {
+  name: '',
+  email: '',
+  imageUrl: '',
+  googleId: '',
+};
+
+export const userDataReducer = (
+  state = userInitialState,
+  { type, payload },
+) => {
+  switch (type) {
+    case SET_USER: {
+      return { ...payload };
     }
     default:
       return state;

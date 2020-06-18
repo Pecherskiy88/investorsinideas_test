@@ -1,13 +1,17 @@
 import React from 'react';
 import GoogleLogin from 'react-google-login';
+import { useDispatch } from 'react-redux';
+
+import { setUser } from '../../redux/actions';
 
 import Header from '../../components/Header';
 
-const responseGoogle = (response) => {
-  localStorage.setItem('user', JSON.stringify(response.profileObj));
-};
-
 const LoginPage = () => {
+  const dispath = useDispatch();
+  const responseGoogle = (response) => {
+    dispath(setUser(response.profileObj));
+  };
+
   return (
     <div>
       <Header />
@@ -17,6 +21,7 @@ const LoginPage = () => {
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
         cookiePolicy={'single_host_origin'}
+        isSignedIn={true}
       />
     </div>
   );
