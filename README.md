@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Clone this repository
 
-git clone https://github.com/Pecherskiy88/Unisender_Task.git
+git clone https://github.com/Pecherskiy88/investorsinideas_test
 
 ## Available Scripts
 
