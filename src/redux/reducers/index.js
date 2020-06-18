@@ -7,6 +7,7 @@ const {
   GET_NEWS_SUCCESS,
   GET_NEWS_FAILURE,
   SET_USER,
+  REMOVE_USER,
 } = ActionType;
 
 const newsDataInitialState = {
@@ -67,6 +68,8 @@ export const userDataReducer = (
     case SET_USER: {
       return { ...payload };
     }
+    case REMOVE_USER:
+      return { ...userInitialState };
     default:
       return state;
   }

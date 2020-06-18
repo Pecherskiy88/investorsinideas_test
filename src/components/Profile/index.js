@@ -1,6 +1,11 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+
+import { userDataSelector } from '../../redux/selectors';
+import { removeUser } from '../../redux/actions';
+
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -31,15 +36,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const profileData = JSON.parse(localStorage.getItem('user'));
-
 const RecipeReviewCard = () => {
   const classes = useStyles();
   const history = useHistory();
-  const { imageUrl, name, email } = profileData;
+  const dispatch = useDispatch();
+
+  const userData = useSelector((state) => userDataSelector(state));
+
+  const { imageUrl, name, email } = userData;
 
   const onLogout = () => {
+    localStorage.removeItem('googleId');
     localStorage.removeItem('user');
+    dispatch(removeUser());
     history.push('/');
   };
   return (
